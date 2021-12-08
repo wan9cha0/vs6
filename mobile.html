@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta name="description" content="描述">
+  <meta name="key" content="关键词">
+  <title>移动端页面</title>
+  <link rel="stylesheet" href="css/common.min.css">
+</head>
+<style>
+  p {
+    color: #fff;
+    font-size: .24rem;
+  }
+
+  .img-one {
+    display: block;
+    margin: 0 auto;
+    max-width: 500px;
+    width: 100%;
+  }
+</style>
+
+<body>
+
+  <div class="page">
+    <div class="box">
+      <p>asdasdas</p>
+      <img class="img-one" src="./img/e7cd7b899e510fb38eef8826ca61409cd0430c6c.jpeg" alt="">
+    </div>
+  </div>
+  <script>
+    (function flexible(window, document) {
+      var docEl = document.documentElement;
+
+      function setRemUnit() {
+        // 临时添加，兼容桌面
+        // var docEl = document.documentElement;
+        var width = docEl.getBoundingClientRect().width;
+        var rem = width / 7.5;
+        rem = parseFloat(rem.toFixed(3));
+        docEl.style.fontSize = rem + 'px';
+        // 修正系统字体调整造成的布局问题
+        var realitySize = parseFloat(window.getComputedStyle(document.documentElement).fontSize);
+        if (rem !== realitySize) {
+          rem = rem * rem / realitySize;
+          docEl.style.fontSize = rem + 'px';
+        }
+      }
+      // reset rem unit on page resize
+      window.addEventListener('resize', setRemUnit);
+      setRemUnit();
+    }(window, document));
+  </script>
+</body>
+
+</html>
